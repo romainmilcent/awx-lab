@@ -1,0 +1,13 @@
+---
+- name: Mise à jour de la VM Debian
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Mettre à jour la liste des paquets
+      apt:
+        update_cache: yes
+
+    - name: Mettre à jour tous les paquets
+      apt:
+        upgrade: dist
+        autoremove: yes

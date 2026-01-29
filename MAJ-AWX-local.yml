@@ -1,13 +1,13 @@
----
-- name: Mise à jour de la VM Debian
-  hosts: localhost
+- name: Mise à jour de la VM AWX locale
+  hosts: all
   become: yes
   tasks:
-    - name: Mettre à jour la liste des paquets
+    - name: Mise à jour du cache APT
       apt:
         update_cache: yes
+        cache_valid_time: 3600
 
-    - name: Mettre à jour tous les paquets
+    - name: Mise à jour des paquets
       apt:
         upgrade: dist
         autoremove: yes
